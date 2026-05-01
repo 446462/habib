@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Habib Brothers Recruiting Agency</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f8f9fc;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* HEADER */
+    header {
+      background: #0b2c74;
+      color: white;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    nav h1 img {
+      height: 60px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ffd700;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(rgba(11,44,116,0.75), rgba(11,44,116,0.75)),
+      url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 120px 20px;
+    }
+
+    .hero h2 {
+      font-size: 50px;
+      margin-bottom: 20px;
+      animation: slideDown 1s ease;
+    }
+
+    .hero p {
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      margin: 10px;
+      background: white;
+      color: #0b2c74;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #ffd700;
+      color: black;
+    }
+
+    /* SECTION */
+    section {
+      padding: 70px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 38px;
+      color: #0b2c74;
+      margin-bottom: 40px;
+    }
+
+    /* ABOUT */
+    .about-content {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .about-text {
+      flex: 1;
+      font-size: 18px;
+    }
+
+    .about img {
+      flex: 1;
+      width: 100%;
+      max-width: 500px;
+      border-radius: 12px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+    }
+
+    /* SERVICES */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .card h3 {
+      color: #0b2c74;
+      margin-bottom: 15px;
+    }
+
+    /* TRAINING */
+    .training ul {
+      max-width: 850px;
+      margin: auto;
+      list-style: none;
+    }
+
+    .training ul li {
+      background: #0b2c74;
+      color: white;
+      padding: 16px;
+      margin: 12px 0;
+      border-radius: 40px;
+      text-align: center;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+
+    .training ul li:hover {
+      background: #163d96;
+    }
+
+    /* CONTACT */
+    .contact {
+      background: #0b2c74;
+      color: white;
+      text-align: center;
+    }
+
+    .contact form {
+      max-width: 650px;
+      margin: auto;
+    }
+
+    .contact input,
+    .contact textarea {
+      width: 100%;
+      padding: 14px;
+      margin: 12px 0;
+      border: none;
+      border-radius: 8px;
+    }
+
+    .contact button {
+      padding: 14px 30px;
+      border: none;
+      background: white;
+      color: #0b2c74;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .contact button:hover {
+      background: #ffd700;
+      color: black;
+    }
+
+    /* WHATSAPP */
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      animation: pulse 1.5s infinite;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #081f52;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    /* ANIMATIONS */
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
+
+    /* MOBILE */
+    @media(max-width: 768px) {
+      nav {
+        flex-direction: column;
+      }
+
+      nav ul {
+        margin-top: 15px;
+        justify-content: center;
+      }
+
+      .hero h2 {
+        font-size: 34px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .about-content {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <nav>
+        <!-- Replace logo.png with your uploaded logo -->
+        <h1><img src="logo.png" alt="Habib Brothers Logo"></h1>
+
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#training">Training</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <h2>Licensed International Recruitment Agency</h2>
+      <p>Connecting skilled Pakistani professionals with GCC and global employers.</p>
+      <a href="#contact" class="btn">Apply Now</a>
+      <a href="#services" class="btn">Our Services</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <div class="container">
+      <h2 class="section-title">About Habib Brothers</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>
+            Habib Brothers Recruiting Agency is a premier licensed recruitment agency with a strong reputation for ethical workforce placement, documentation support, visa processing, and employer partnerships across GCC countries and international markets.
+          </p>
+          <br>
+          <p>
+            We specialize in connecting skilled and semi-skilled Pakistani professionals with trusted employers in construction, engineering, hospitality, healthcare, and industrial sectors.
+          </p>
+        </div>
+
+        <!-- Replace office.jpg with your uploaded office image -->
+        <img src="office.jpg" alt="Habib Brothers Office">
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <h2 class="section-title">Our Core Services</h2>
+
+      <div class="cards">
+        <div class="card">
+          <h3>International Recruitment</h3>
+          <p>Complete overseas recruitment solutions for construction, hospitality, healthcare, engineering, and IT sectors.</p>
+        </div>
+
+        <div class="card">
+          <h3>Workforce Mobilization</h3>
+          <p>Visa processing, documentation, medical exams, deployment, and pre-departure support.</p>
+        </div>
+
+        <div class="card">
+          <h3>Employer Partnership</h3>
+          <p>Reliable staffing solutions for international employers seeking trusted manpower.</p>
+        </div>
+
+        <div class="card">
+          <h3>Candidate Advocacy</h3>
+          <p>Transparent contracts, ethical placement, and full legal rights protection.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAINING -->
+  <section id="training" class="training">
+    <div class="container">
+      <h2 class="section-title">Core Training Modules</h2>
+
+      <ul>
+        <li>Painting & Finishing</li>
+        <li>Tile & Marble Fitting</li>
+        <li>Plumbing & Sanitation Systems</li>
+        <li>Steel Fixing & Reinforcement</li>
+        <li>Masonry & Concrete Work</li>
+        <li>Basic English/Arabic for the Worksite</li>
+        <li>Electrical Wiring & Safety Standards</li>
+        <li>Health, Safety & Environment (HSE) Certification</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+
+      <!-- Replace with your real email -->
+      <form action="https://formsubmit.co/your-email@example.com" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message"></textarea>
+        <button type="submit">Send Inquiry</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 Habib Brothers Recruiting Agency | All Rights Reserved</p>
+  </footer>
+
+  <!-- WHATSAPP BUTTON -->
+  <!-- Replace with your WhatsApp number -->
+  <a href="https://wa.me/923001234567" class="whatsapp" target="_blank">WhatsApp Us</a>
+
+</body>
+</html>
